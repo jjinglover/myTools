@@ -54,7 +54,7 @@ void hexifyUpper(char *obuf, const unsigned char *ibuf, int len)
 int main(int argc, char* argv[])
 {
 	if (argc==2) {
-		auto fp = fopen(argv[1], "r");
+		auto fp = fopen(argv[1], "rb");
 		if (fp)
 		{
 			fseek(fp,0, SEEK_END);
