@@ -30,11 +30,17 @@ namespace jps {
 		}
 	}
 
-	void myData::initData(const std::vector<std::vector<bool>>& spaceVec, int maxX, int maxY)
+	void myData::setMapSize(int width, int height)
 	{
-		_maxIndexX = maxX;
-		_maxIndexY = maxY;
-		_spaceVec = spaceVec;
+		_maxIndexX = width;
+		_maxIndexY = height;
+		for (size_t i = 0; i < width; i++)
+		{
+			for (size_t j = 0; j < height; j++)
+			{
+				_spaceArr[i][j] = true;
+			}
+		}
 	}
 
 	myGridNode* myData::getGridNode(int x, int y)
@@ -55,13 +61,21 @@ namespace jps {
 
 	bool myData::canPass(int x, int y)
 	{
-		return this->inBounds(x, y) && _spaceVec[x][y];
+		return this->inBounds(x, y) && _spaceArr[x][y];
 	}
 
 	bool myData::inBounds(int x, int y)
 	{
 		return x >= 0 && x < _maxIndexX&&
 			y >= 0 && y < _maxIndexY;
+	}
+
+	void myData::updateWall(int x, int y, bool isWall)
+	{
+		if (this->inBounds(x, y))
+		{
+			_spaceArr[x][y] = !isWall;
+		}
 	}
 
 	static std::vector<myVec2> neighbourDirVec =

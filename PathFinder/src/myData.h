@@ -8,6 +8,9 @@
 
 namespace jps
 {
+#define MAP_MAX_WIDTH 2048
+#define MAP_MAX_HEIGHT 2048
+
 	class myGridNode;
 	class myData
 	{
@@ -15,8 +18,8 @@ namespace jps
 		myData();
 		~myData();
 
-		//初始化地图数据
-		void initData(const std::vector<std::vector<bool>>& spaceVec, int maxX, int maxY);
+		//设置地图大小，并初始化空地数据
+		void setMapSize(int width, int height);
 
 		myGridNode* getGridNode(int x, int y);
 		myGridNode* getGridNode(const myVec2& pos);
@@ -24,6 +27,8 @@ namespace jps
 		bool canPass(int x, int y);
 		//点是否在地图区域内
 		bool inBounds(int x, int y);
+		//跟新阻挡点信息
+		void updateWall(int x, int y, bool isWall);
 		//获取邻居节点
 		std::vector<myGridNode*> getNeighbours(myGridNode* node);
 	private:
@@ -33,7 +38,7 @@ namespace jps
 		int _maxIndexY;
 		std::stack<myGridNode*> _freeNodes,_useNodes;
 		//地图空地信息【false表示有阻挡不能通过】
-		std::vector<std::vector<bool>> _spaceVec;
+		bool _spaceArr[MAP_MAX_WIDTH][MAP_MAX_HEIGHT];
 	};
 }
 #endif
