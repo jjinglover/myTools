@@ -23,6 +23,8 @@ namespace jps
 
 		myGridNode* getGridNode(int x, int y);
 		myGridNode* getGridNode(const myVec2& pos);
+		//清理上一次使用的节点
+		void clearGridNodes();
 		//点是否可通过
 		bool canPass(int x, int y);
 		//点是否在地图区域内

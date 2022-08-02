@@ -37,6 +37,14 @@ namespace jps
 		myGridNode *_parent;
 		myVec2 _pos;
 	};
+
+	struct myGridNodeCmp
+	{
+		bool operator()(myGridNode*& a, myGridNode*& b) const
+		{
+			return a->_fValue > b->_fValue;
+		}
+	};
 };
 
 #endif

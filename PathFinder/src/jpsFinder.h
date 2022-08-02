@@ -24,7 +24,7 @@ namespace jps
 		double heuristicValue(int dx, int dy);
 		myVec2 jump(const myVec2& current, const myVec2& proposed);
 	private:
-		std::priority_queue<myGridNode*, std::vector<myGridNode*>, std::greater<myGridNode*>> _openList;
+		std::priority_queue<myGridNode*, std::vector<myGridNode*>, myGridNodeCmp> _openList;
 		myData* _dataPtr;
 		myVec2 _goal;
 		//¶Ô½ÇÏßÏûºÄ

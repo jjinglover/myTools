@@ -19,6 +19,7 @@ namespace jps
 
 	void jpsFinder::findPath(const myVec2& start, const myVec2& goal, std::vector<myVec2>& pathVec)
 	{
+		_dataPtr->clearGridNodes();
 		_goal = goal;
 
 		auto startNode = _dataPtr->getGridNode(start);

@@ -59,6 +59,17 @@ namespace jps {
 		return this->getGridNode(pos.x, pos.y);
 	}
 
+	void myData::clearGridNodes()
+	{
+		while (!_useNodes.empty())
+		{
+			auto ptr = _useNodes.top();
+			delete ptr;
+			ptr = nullptr;
+			_useNodes.pop();
+		}
+	}
+
 	bool myData::canPass(int x, int y)
 	{
 		return this->inBounds(x, y) && _spaceArr[x][y];
